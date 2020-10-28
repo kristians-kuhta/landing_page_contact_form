@@ -1,16 +1,22 @@
 <div class='container'>
-  <div class='contact-form'>
-    <div class='contact-form__left'>
-      <input type='text' class='input-element' placeholder='Full name'/>
-      <input type='text' class='input-element' placeholder='Email'/>
-      <input type='text' class='input-element' placeholder='Phone'/>
-      <input type='text' class='input-element' placeholder='Subject'/>
+  <%= form_tag contact_form_entries_path do %>
+    <div class='contact-form'>
+      <div class='contact-form__left'>
+        <%= text_field_tag(:full_name, nil, class: 'input-element', placeholder: 'Full name') %>
+        <%= text_field_tag(:email, nil, class: 'input-element', placeholder: 'Email') %>
+        <%= text_field_tag(:phone, nil, class: 'input-element', placeholder: 'Phone') %>
+        <%= text_field_tag(:subject, nil, class: 'input-element', placeholder: 'Subject') %>
+      </div>
+      <div class='contact-form__right'>
+        <%= text_area_tag(
+              :message,
+              nil,
+              class: 'input-element input-element__textarea',
+              placeholder: 'Your message here'
+            )
+        %>
+        <%= submit_tag('Send', class: 'btn') %>
+      </div>
     </div>
-    <div class='contact-form__right'>
-      <textarea class='input-element input-element__textarea' placeholder='Your message here'>
-      </textarea>
-      <button class='btn'>Send</button>
-    </div>
-    </div>
-  </div>
+  <% end %>
 </div>
