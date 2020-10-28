@@ -77,3 +77,13 @@
   color: #CECECE;
   border: 1px solid #AA2F2F;
 }
+
+.flash-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.flash-message__success {
+  background-color: #34bc38;
+  color: #154d17;
+}
