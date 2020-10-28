@@ -20,6 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: landing_page_contact_form
+  password: <%= ENV['LANDING_PAGE_CONTACT_FORM_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -81,5 +83,3 @@ test:
 production:
   <<: *default
   database: landing_page_contact_form_production
-  username: landing_page_contact_form
-  password: <%= ENV['LANDING_PAGE_CONTACT_FORM_DATABASE_PASSWORD'] %>
