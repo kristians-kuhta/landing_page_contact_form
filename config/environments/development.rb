@@ -28,10 +28,21 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # WARNING: setting this option to true means that all of the emails will be
+  #          delivered to you Gmail account
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    user_name:            ENV.fetch('LANDING_PAGE_CONTACT_FORM_GMAIL_USERNAME'),
+    password:             ENV.fetch('LANDING_PAGE_CONTACT_FORM_GMAIL_PASSWORD'),
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
